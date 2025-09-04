@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcuator</title>
+</head>
+<body style="text-align: center;">
+    <h1>Calculator !!!</h1>
+    <p>num1 = 10
+    <span id="num1-el"></span>
+    </p>
+    <p> num2 = 2
+    <span id="num2-el"></span>
+    </p>
+    <button onclick="add()">Add</button><br><br>
+    <button onclick="sub()">Sub</button><br><br>
+    <button onclick="mul()">Multiply</button><br><br>
+    <button onclick="div()">Divide</button><br><br>
+
+    <span id="result">Result=_</span>
+    
+    <script>
+        let num1= 10
+        let num2= 2
+        function add()
+        {
+            let sum = num1 + num2
+            document.getElementById("result").textContent ="Result="+sum
+        }
+        function sub()
+        {   
+            let subs =num1-num2
+            document.getElementById("result").innerText = "Result="+ subs
+        }
+        function mul()
+        {   
+            let Mul =num1*num2
+            document.getElementById("result").textContent = "Result="+Mul
+        }
+        function div()
+        {
+            let Div =num1/num2
+            document.getElementById("result").textContent = "Result="+Div
+        }
+    </script>
+</body>
+</html>

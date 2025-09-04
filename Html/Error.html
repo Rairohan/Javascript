@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error example</title>
+</head>
+<body>
+    <h2>Nike Shoes</h2>
+    <p>Nike shoes no 1</p>
+    <button id="Purchase-btn" onclick="Errors()">Purchase</button>
+    <p id="error"></p>
+    <script>
+        function Errors()
+        {
+            let ercode = "Something went wrong ! please try again"
+            document.getElementById("error").innerText = ercode
+        }
+    </script>
+</body>
+</html>
