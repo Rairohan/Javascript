@@ -1,0 +1,152 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Counter</title>
+    <link rel="stylesheet" href="/CSS/index.css">
+</head>
+<body>
+    <script src="/Javascript/index.js"></script>
+    <h1>Welcome!</h1>
+    <h2 >People Entered </h2>
+    <h3 id="count-el">0</h3>
+    <button id="Increment-el" onclick="increment()">Increment</button>
+    <button id="Decrement-el" onclick="decrement()">Decrement</button>
+    <button id="Save-el" onclick="save()">Save</button>
+    <p id="prev-el"> Previous entries: </p>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="email"] {
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .action-input {
+            width: 120px;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Management</h1>
+
+    <!-- Add User Form -->
+    <form id="addUserForm">
+        Name: <input type="text" id="name" required>
+        Email: <input type="email" id="email" required>
+        <button type="submit">Add User</button>
+    </form>
+
+    <hr>
+
+    <!-- User List Table -->
+    <h2>User List</h2>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example Row -->
+            <tr>
+                <td>1</td>
+                <td>userAdmin</td>
+                <td>Rohanrai@gmail.com</td>
+                <td>
+                    <button onclick="deleteUser(this)">Delete</button>
+                    Name: <input type="text" class="action-input" value="userAdmin">
+                    Email: <input type="email" class="action-input" value="Rohanrai@gmail.com">
+                    <button onclick="updateUser(this)">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let userId = 2; // Next user ID
+
+        // Add User
+        document.getElementById('addUserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.innerHTML = `
+                <td>${userId}</td>
+                <td>${name}</td>
+                <td>${email}</td>
+                <td>
+                    <button onclick="deleteUser(this)">Delete</button>
+                    Name: <input type="text" class="action-input" value="${name}">
+                    Email: <input type="email" class="action-input" value="${email}">
+                    <button onclick="updateUser(this)">Update</button>
+                </td>
+            `;
+
+            userId++;
+            document.getElementById('addUserForm').reset();
+        });
+
+        // Delete User
+        function deleteUser(button) {
+            const row = button.closest('tr');
+            row.remove();
+        }
+
+        // Update User
+        function updateUser(button) {
+            const row = button.closest('tr');
+            const inputs = row.querySelectorAll('input.action-input');
+            row.cells[1].innerText = inputs[0].value;
+            row.cells[2].innerText = inputs[1].value;
+        }
+    </script>
+
+</body>
+</html>
