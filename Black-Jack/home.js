@@ -23,7 +23,11 @@ else
 console.log(hasblackjack)
 
 document.getElementById("msg").textContent = message
-document.getElementById("hand").innerHTML ="Your cards are "+ cards
+let CardEl=document.getElementById("hand")
+CardEl.innerHTML ="Your cards are "
+for(let i =0;i<cards.length;i++){
+    CardEl.textContent +=cards[i]+" "
+}
 document.getElementById("sum").innerHTML = "Your sum is:"+res
 
 }
