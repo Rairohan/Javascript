@@ -1,14 +1,19 @@
-let firstcard = randomcard()
-let secondcard = randomcard()
-let cards= [firstcard,secondcard]
-let res = firstcard+secondcard
-let hasblackjack = false
 
+let cards= []
+let res = 0
+let hasblackjack = false
+let isAlive = false
+let player = {
+    name: "Rohan",
+    chip: 100
+}
+document.getElementById("player-id").textContent = player.name+ " :$ " +player.chip
 
 function rendergame(){
     if(res<=20)
 {
     message ="No Blackjack,Draw a new card?"
+    hasblackjack=false
     
 }
 else if(res===21)
@@ -16,11 +21,12 @@ else if(res===21)
     message ="BlackJack!!!!"
      hasblackjack = true
 }
-else
+else    
 {
     message="you are out!"
+    hasblackjack=false
 }
-console.log(hasblackjack)
+
 
 document.getElementById("msg").textContent = message
 let CardEl=document.getElementById("hand")
@@ -34,13 +40,23 @@ document.getElementById("sum").innerHTML = "Your sum is:"+res
 
 function newcard()
 {
+    if(hasblackjack===false && isAlive===true && res<21){
  let card = randomcard()
  res = res+card
  cards.push(card)
  rendergame()
 }
+}
 function startgame(){
+    if(isAlive===false){
+    let firstcard = randomcard()
+    let secondcard = randomcard()
+    cards.push(firstcard)
+    cards.push(secondcard)
+    res = firstcard+secondcard
     rendergame()
+    isAlive=true
+    }
 }
 function randomcard(){
     let random = Math.floor(Math.random()*13+1)
