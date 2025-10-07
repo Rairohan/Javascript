@@ -1,16 +1,16 @@
-
-let cards= []
-let res = 0
-let hasblackjack = false
+let cards= []//array which stores card drawn
+let res = 0//variable that holds total sum of cards that player has drawn
+let hasblackjack = false//variable illustrating boolean 
 let isAlive = false
 let player = {
     name: "Rohan",
     chip: 100
-}
-document.getElementById("player-id").textContent = player.name+ " :$ " +player.chip
+}//object created
+document.getElementById("player-id").textContent = player.name+ " :$ " +player.chip//capturing the html element by id 
+// and textcontent sets or gets text only, here player.name simple access the object
 
 function rendergame(){
-    if(res<=20)
+    if(res<=20)//condition
 {
     message ="No Blackjack,Draw a new card?"
     hasblackjack=false
@@ -59,11 +59,13 @@ function startgame(){
     }
 }
 function randomcard(){
-    let random = Math.floor(Math.random()*13+1)
+    let random = Math.floor(Math.random()*13+1)//random is a variable where math methods which here math.floor floors the values
+    //generated and math.random generates random number but from 0 to 1 so we extend the boundry by *13 so now it becomes 0-13 and
+    //we use +1 so that it starts from 1-13 
     if(random > 10){
         return 10
     }
-    else if( random ===1 )
+    else if( random === 1 )//triple (=) or === simple compares both data types and value
     {
         return 11
     }
